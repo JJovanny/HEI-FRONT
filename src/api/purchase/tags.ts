@@ -1,0 +1,4 @@
+export enum Tags {
+    GET_PURCHASE = 'GET_PURCHASE',
+    POST_PURCHASE ='POST_PURCHASE',
+}

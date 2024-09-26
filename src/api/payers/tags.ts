@@ -1,0 +1,3 @@
+export enum Tags {
+    GET_MY_FINANCIAL_COMPANIES = 'GET_MY_FINANCIAL_COMPANIES',
+}

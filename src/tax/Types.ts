@@ -1,0 +1,14 @@
+export default class Types {
+  /** TAX DATA **/
+  static SET_TAX_DATA_PROPS = 'SET_TAX_DATA_PROPS'
+  static SET_VALUE_TAX_DATA = 'SET_VALUE_TAX_DATA'
+
+  /** GET DATA */
+  static GET_TAX = 'GET_TAX'
+
+  /** CLEAR DATA */
+  static CLEAR_ERROR_TAX_DATA = 'CLEAR_ERROR_TAX_DATA'
+  static CLEAR_ERROR_TAXES_DATA = 'CLEAR_ERROR_TAXES_DATA'
+  static CLEAR_TAX_DATA = 'CLEAR_TAX_DATA'
+  static CLEAR_TAXES_DATA = 'CLEAR_TAXES_DATA'
+}

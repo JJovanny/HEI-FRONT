@@ -1,0 +1,56 @@
+import { EUserType, EUserTypeE } from './enums'
+import { IError } from './global'
+import { IPaymentPreferences } from './invoice'
+
+export interface IUser {
+    id: string,
+    email: string,
+    verificationCode: string,
+    bankInformation: string,
+    currencyCode: string,
+    firstName: string,
+    lastName: string,
+    phone: string,
+    pinAccess: boolean,
+    pinSuccess: boolean,
+    ci: string,
+    ciInvitation: string,
+    password: string,
+    companyName: string,
+    companyCIF: string,
+    companyAddress: string,
+    companyPostalCode: string,
+    companyCity: string,
+    companyCountry: string,
+    typeCompany: string,
+    companyRegion: string,
+    region: string,
+    financialCompany: string[],
+    paymentPreferences: IPaymentPreferences,
+    externalPayment: boolean,
+    userType: EUserType | EUserTypeE,
+    companyBranchs?: [],
+    companyBranchSelected?: {},
+    companyBranchSelectedId?: string,
+    payerId: string,
+}
+
+export interface IUserState {
+    showFormSupplierCraate: boolean,
+    accessToken: string,
+    refreshToken: string,
+    changeEmail:{newEmail: string, verificationCode: string},
+    isLoadingPostChangeEmail: boolean,
+    isLoadingConfirmChangeEmail: boolean,
+    postDataUser: IUser,
+    acceptUseConditions: boolean,
+    isLoadingPostDataUser: boolean,
+    isLoadingPutDataUser: boolean,
+    errorUserData: IError[],
+    submitPost: boolean,
+    submitPut: boolean,
+    isLoadingGetSupplierMe: boolean,
+    putDataUser: IUser,
+    dataUser: IUser,
+    isLoadingPatchPaymentPreferences: boolean
+}

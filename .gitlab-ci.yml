@@ -1,0 +1,62 @@
+stages:
+  - build
+  - upload
+  - invalidate
+
+app_build_dev:
+  stage: build
+  script:
+    - docker run --rm -v $(pwd):/home/node/app -w /home/node/app node:21 yarn install
+    - docker run --rm -v $(pwd):/home/node/app -w /home/node/app node:21 yarn run generate-pre
+  after_script:
+    - docker run --rm -v $(pwd):/home/node/app node:21 chown -R 999:999 /home/node/app
+  artifacts:
+    paths:
+      - pre
+  retry: 2
+  only:
+    - develop
+
+upload_dev:
+  stage: upload
+  script: aws s3 sync pre s3://quickpay-pre-front --delete --profile quickpay
+  retry: 2
+  only:
+    - develop
+
+invalidate_dev:
+  stage: invalidate
+  script: aws cloudfront create-invalidation --distribution-id E3HOTUX9ULKOIV --paths "/*" --profile quickpay
+  retry: 2
+  only:
+    - develop
+
+# PRODUCTION
+app_build_pro:
+  stage: build
+  script:
+    - docker run --rm -v $(pwd):/home/node/app -w /home/node/app node:21 yarn install
+    - docker run --rm -v $(pwd):/home/node/app -w /home/node/app node:21 yarn run generate-pro
+  after_script:
+    - docker run --rm -v $(pwd):/home/node/app node:21 chown -R 999:999 /home/node/app
+  artifacts:
+    paths:
+      - pro
+  retry: 2
+  only:
+    - master
+
+upload_pro:
+  stage: upload
+  script: aws s3 sync pro s3://quickpay-pro-front --delete --profile quickpaypro
+  retry: 2
+  only:
+    - master
+
+invalidate_pro:
+  stage: invalidate
+  script: aws cloudfront create-invalidation --distribution-id EROF54GJEGSP1 --paths "/*" --profile quickpaypro
+  retry: 2
+  only:
+    - master
+

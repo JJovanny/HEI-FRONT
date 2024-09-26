@@ -1,0 +1,4 @@
+export default class Types {
+  static SET_INVOICES_DATA_PROPS = 'SET_INVOICES_DATA_PROPS'
+  static CLEAR_INVOICES_DATA = 'CLEAR_INVOICES_DATA'
+}
