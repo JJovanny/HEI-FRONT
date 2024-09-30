@@ -22,6 +22,8 @@ export default class Routing {
   static addInvoice = '/invoices/add'
 
   static shoppingCart = '/shopping-cart'
+  static purchase = '/purchase'
+  static purchaseAdmin = '/purchaseAdmin'
 
   /** Clients */
   static customers = '/customers'

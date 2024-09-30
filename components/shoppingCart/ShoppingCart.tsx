@@ -8,7 +8,7 @@ import Swal from 'sweetalert2';
 
 // Definir el tipo para los productos en el carrito
 interface CartItem {
-  id: number;
+  producId: number;
   name: string;
   quantity: number;
   price: number;
@@ -108,7 +108,7 @@ export default function ShoppingCart() {
     if (quantity > 0) {
       setCart((prevCart) => {
         const existingProductIndex = prevCart.findIndex(
-          (item) => item.id === product.id
+          (item) => item.producId === product.id
         );
 
         if (existingProductIndex !== -1) {
@@ -119,7 +119,7 @@ export default function ShoppingCart() {
           return [
             ...prevCart,
             {
-              id: product.id,
+                producId: product.id,
               name: product.name,
               quantity,
               price: handleCalculateDiscount(product.price),
@@ -144,7 +144,7 @@ export default function ShoppingCart() {
 
   const handleRemoveFromCart = (id) => {
     setCart((prevCart) => {
-      const newCart = prevCart.filter((item) => item.id !== id);
+      const newCart = prevCart.filter((item) => item.producId !== id);
       if (newCart.length === 0) {
         setShowModal(false);
       }
@@ -289,7 +289,7 @@ export default function ShoppingCart() {
                             {cart.map((item) => (
                               <li
                                 className="list-group-item d-flex justify-content-between align-items-start"
-                                key={item.id}
+                                key={item.producId}
                               >
                                 <div className="me-auto">
                                   <h5 className="mb-1">
@@ -318,7 +318,7 @@ export default function ShoppingCart() {
                                   className="btn btn-sm btn-danger"
                                   onClick={(e) => {
                                     e.stopPropagation();
-                                    handleRemoveFromCart(item.id);
+                                    handleRemoveFromCart(item.producId);
                                   }}
                                 >
                                   <img src="/images/trash.svg" alt="trash" />

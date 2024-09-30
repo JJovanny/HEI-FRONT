@@ -18,6 +18,7 @@ import CompaniesReducer from 'src/admin/companies/CompaniesReducer'
 import AdminInvoicesReducer from 'src/admin/invoices/AdminInvoicesReducer'
 import UserCompanyReducer from 'src/admin/userCompany/UserCompanyReducer'
 import NotificationReducer from 'src/notifications/NotificationReducer'
+import PurchaseReducer from 'src/purchase/PurchaseReducer'
 
 // Reducers
 const reducer = combineReducers({
@@ -39,7 +40,8 @@ const reducer = combineReducers({
   CompaniesReducer,
   AdminInvoicesReducer,
   UserCompanyReducer,
-  ProductReducer
+  ProductReducer,
+  PurchaseReducer
 })
 
 export const RootReducer = (state: any, action: AnyAction) => {

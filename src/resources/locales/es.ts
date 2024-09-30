@@ -588,7 +588,7 @@ export default {
 
   dashboard: {
     totalInvoices: 'Total de facturas',
-    sinceLastMonth: 'Desde el mes pasado',
+    sinceLastMonth: 'Este mes',
     clients: 'Clientes',
     creditProviders: 'Proveedores de crédito',
     quickayInvoices: 'Facturas Quickpay',

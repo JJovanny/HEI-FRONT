@@ -37,7 +37,7 @@ const links = [
   },
   {
     label: 'Compras',
-    route: Routing.customers
+    route: Routing.purchase
   }
 ]
 
@@ -64,6 +64,10 @@ const adminLinkOnboardingProfiles = [
   {
     label: strings('title.admin.users'),
     route: Routing.adminUsers
+  },
+  {
+    label: 'Ventas',
+    route: Routing.purchaseAdmin
   }
 
 ]
