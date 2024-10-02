@@ -20,6 +20,7 @@ import { AddSuccessModal } from 'components/modal/AddSuccessModal'
 import { IInvoiceState } from 'src/types/invoice'
 import { DeleteModal } from '../modal/DeleteModal'
 import { ViewInvoiceModalDashboard } from 'components/modal/ViewInvoiceModalDashboard'
+import { apiGetUserMe } from 'src/user/UserActions'
 
 export const DashboardList = () => {
   const dispatch = useDispatch()
@@ -34,11 +35,13 @@ export const DashboardList = () => {
 
   useEffect(() => {
     dispatch(clearDataDashboard())
+    dispatch(apiGetUserMe())
     dispatch(apiGetDashboard())
   }, [])
 
   const usersInvite = dataDashboard && dataDashboard.users ? dataDashboard.users : 0;
   const usersThisMonth = dataDashboard && dataDashboard.usersThisMonth ? dataDashboard.usersThisMonth : 0;
+  const totalScore = dataDashboard && dataDashboard.totalScore ? dataDashboard.totalScore : 0;
   
   const thisMonth = InvoiceManager.getThisMonth(dataDashboard)
   const issued = InvoiceManager.getIssued(thisMonth)
@@ -66,8 +69,8 @@ export const DashboardList = () => {
                     <div className='card-body'>
                       <div className='row'>
                         <div className='col'>
-                          <span className='h6 font-semibold text-muted text-sm d-block mb-2'>Productos Comprados</span>
-                          <span className='h1 font-bold mb-0'>{0}</span>
+                          <span className='h6 font-semibold text-muted text-sm d-block mb-2'>Total puntos acumulado</span>
+                          <span className='h1 font-bold mb-0'>{totalScore} pts</span>
                         </div>
                         <div className='col-auto'>
                           <div className='icon icon-shape bg-tertiary text-white text-lg rounded-circle'>
@@ -75,12 +78,11 @@ export const DashboardList = () => {
                           </div>
                         </div>
                       </div>
-                      <div className='mt-2 mb-0 text-sm'>
+                      {/* <div className='mt-2 mb-0 text-sm'>
                         <span className='badge badge-pill bg-opacity-30 bg-success text-white me-2'>
-                          <i className='bi bi-arrow-up me-1' />{0} %
+                          <i className='bi bi-arrow-up me-1' />{totalScore} pts
                         </span>
-                        <span className='text-nowrap text-xs text-muted'>{strings('dashboard.sinceLastMonth')} </span>
-                      </div>
+                      </div> */}
                     </div>
                   </div>
                 </div>
@@ -127,7 +129,7 @@ export const DashboardList = () => {
                     </div>
                   </div>
                 </div> */}
-                <div className='col-xl-3 col-sm-6 col-12'>
+                {/* <div className='col-xl-3 col-sm-6 col-12'>
                   <div className='card h-100'>
                     <div className='card-body'>
                       <div className='row'>
@@ -153,7 +155,7 @@ export const DashboardList = () => {
                       </div>
                     </div>
                   </div>
-                </div>
+                </div> */}
               </div>
             
 

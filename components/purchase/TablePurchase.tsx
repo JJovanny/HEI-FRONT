@@ -67,7 +67,7 @@ export const TablePurchase = ({ id, totalToPay, operationNumber, approved, creat
               {/* Lista de detalles de compra con scroll */}
               <h6 className="mt-3 mb-2">Detalles de la Compra:</h6>
               <ul className="list-group" style={{ maxHeight: '200px', overflowY: 'auto' }}> {/* Ajusta la altura máxima */}
-                {purchase.purchaseDetail && purchase.purchaseDetail.length > 0 ? (
+                {purchase && purchase.purchaseDetail && purchase.purchaseDetail.length > 0 ? (
                   purchase.purchaseDetail.map((detail) => (
                     <li className="list-group-item d-flex justify-content-between align-items-center" key={detail.id} style={{ padding: '15px 20px' }}>
                       <div>

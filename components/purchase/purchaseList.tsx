@@ -5,7 +5,7 @@ import { apiGetSupplierClients, clearClientsData, clearClientsFilters, setClient
 import { useEffect, useState } from 'react'
 import { UserFilter } from 'components/filter/UserFilter'
 import { NotFound } from 'ui/NotFound'
-import { postUser } from 'src/user/UserActions'
+import { apiGetUserMe, postUser } from 'src/user/UserActions'
 import { getPurchasesApi } from 'src/purchase/PurchaseAction'
 import { TablePurchase } from './TablePurchase'
 import { IPurchaseState } from 'src/types/purchase'
@@ -16,6 +16,7 @@ export const PurchaseList = () => {
 
   useEffect(() => {
     dispatch(getPurchasesApi())
+    dispatch(apiGetUserMe())
     return () => {}
   }, [])
 

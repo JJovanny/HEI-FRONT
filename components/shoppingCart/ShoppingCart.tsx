@@ -4,6 +4,7 @@ import { postPurchaseApi } from "src/purchase/PurchaseAction";
 import { useDispatch, useSelector } from "src/redux/hooks";
 import { EUserTypeE } from "src/types/enums";
 import { IUserState } from "src/types/user";
+import { apiGetUserMe } from "src/user/UserActions";
 import Swal from 'sweetalert2';
 
 // Definir el tipo para los productos en el carrito
@@ -36,6 +37,8 @@ export default function ShoppingCart() {
 
   const handleDiscountProduct = () => {
     switch (userType) {
+      case undefined:
+        return 0;
       case EUserTypeE.DISTRIBUTOR:
         return 25;
       case EUserTypeE.BUILDER:
@@ -153,6 +156,7 @@ export default function ShoppingCart() {
   };
 
   useEffect(() => {
+    dispatch(apiGetUserMe())
     dispatch(apiGetProductsUser());
   }, [dispatch]);
 
